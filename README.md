@@ -32,4 +32,6 @@ These properties make my work unique as it focuses on audio-responsive animation
 
 **References and Inspirations** 
 
-![My inspiration](readmeImages/7351747_orig.jpg)
+
+![An image of my inspiration](readmeImages/7351747_orig.jpg)
+
