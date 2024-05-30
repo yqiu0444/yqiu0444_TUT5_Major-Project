@@ -10,7 +10,7 @@
 
 
 
-## Details of my individual approach to animating the group code.
+## Details of my individual approach to animating the group code
 
 
 ### I choose to use *audio* to drive my individual code
@@ -27,7 +27,7 @@
 
 
 
-These properties make my work unique as it focuses on audio-responsive animations（mainly shape and size changes）, contrasting with group members who might focus on color changes or revealing/hiding components.
+These properties make my work unique as it focuses on audio-responsive animations（mainly shape and size changes）, contrasting with group members who might focus on color changes.
 
 
 **References and Inspirations** 
@@ -35,3 +35,13 @@ These properties make my work unique as it focuses on audio-responsive animation
 
 ![An image of my inspiration](readmeImages/7351747_orig.jpg)
 
+![An image of my inspiration](readmeImages/6801766_orig.jpg)
+
+**How did they influence my submission?**
+
+I feel the charm of geometric shapes and colors from this picture. Simple circles can be delicately arranged to create a dynamic visual effect, showing the aesthetics of abstract art. At the same time with the rich and vibrant color scheme, it gives the viewer a wonderful experience! So for my project I wanted to use bright colors and simple geometric shapes to create an ethnic visual effect, and I chose audio with an ethnic flavor!
+
+
+**External Tools and Techniques** 
+
+**1. p5.js Audio Library and p5.js Reference:**  Find and use the corresponding technique in the p5.js library.
