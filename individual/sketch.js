@@ -72,17 +72,20 @@ function draw() {
   let maxLevel = Math.max(...spectrum);
 
   // Calculate rotation angle based on audio data
-  rotationAngle += maxLevel / 9000;
+  rotationAngle += maxLevel / 9000; // Increase the divisor to slow down the rotation
 
   // Draw all circles and other patterns
   for (let i = 0; i < circles.length; i++) {
     let c = circles[i];
     let radii = [c.d, c.d * 0.55, c.d * 0.5, c.d * 0.25, c.d * 0.15, c.d * 0.1, c.d * 0.05]; // Sizes of the main and inner circles
 
+    // Scale the radii based on the spectrum values
+    let scale = 1 + spectrum[i % spectrum.length] / 255;
+
     if (c.isSpecial) {
-      drawSpecialCirclePattern(c.x, c.y, radii.map(r => r * (1 + maxLevel / 255)), c.colors, c.styleType);
+      drawSpecialCirclePattern(c.x, c.y, radii.map(r => r * scale), c.colors, c.styleType);
     } else {
-      drawCirclePattern(c.x, c.y, radii.map(r => r * (1 + maxLevel / 255)), c.colors, c.styleType);
+      drawCirclePattern(c.x, c.y, radii.map(r => r * scale), c.colors, c.styleType);
     }
   }
 
@@ -373,3 +376,4 @@ function togglePlay() {
     playButton.html('Pause');
   }
 }
+
