@@ -12,6 +12,7 @@ let goldLineSpikes = 16; // Number of spikes in the gold line, default 16
 
 let soundFile, fft;
 let playButton;
+let rotationAngle = 0; // Rotation angle for the orange ring and small balls
 
 function preload() {
   soundFile = loadSound('assets/655396__sergequadrado__middle-east.wav');
@@ -70,6 +71,9 @@ function draw() {
   let spectrum = fft.analyze();
   let maxLevel = Math.max(...spectrum);
 
+  // Calculate rotation angle based on audio data
+  rotationAngle += maxLevel / 9000;
+
   // Draw all circles and other patterns
   for (let i = 0; i < circles.length; i++) {
     let c = circles[i];
@@ -82,13 +86,12 @@ function draw() {
     }
   }
 
-  // Draw orange rings
+  // Draw orange rings and patterns
   drawOrangeCircles(circles);
 
-  // Draw patterns on the orange rings
   for (let i = 0; i < circles.length; i++) {
     let c = circles[i];
-    drawPatternOnRing(c.x, c.y, c.d / 2 + 15);
+    drawPatternOnRing(c.x, c.y, c.d / 2 + 15, rotationAngle);
   }
 
   // Finally, draw pink arcs, ensuring they are on top
@@ -275,7 +278,12 @@ function drawOrangeCircles(circles) {
   }
 }
 
-function drawPatternOnRing(cx, cy, radius) {
+function drawPatternOnRing(cx, cy, radius, rotation) {
+  push();
+  translate(cx, cy);
+  rotate(rotation);
+  translate(-cx, -cy);
+  
   let numPatterns = 8; // Number of patterns, reducing density
   let angleStep = TWO_PI / numPatterns; // Angle between each pattern
 
@@ -301,6 +309,8 @@ function drawPatternOnRing(cx, cy, radius) {
     fill(255);
     ellipse(xOffset2, yOffset2, 7, 7);
   }
+
+  pop();
 }
 
 function drawArcThroughCenter(x, y, radius, startAngle) {
