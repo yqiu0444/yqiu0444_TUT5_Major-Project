@@ -94,7 +94,7 @@ function draw() {
 
   for (let i = 0; i < circles.length; i++) {
     let c = circles[i];
-    drawPatternOnRing(c.x, c.y, c.d / 2 + 15, rotationAngle);
+    drawPatternOnRing(c.x, c.y, c.d / 2 + 15, rotationAngle, spectrum);
   }
 
   // Finally, draw pink arcs, ensuring they are on top
@@ -281,7 +281,7 @@ function drawOrangeCircles(circles) {
   }
 }
 
-function drawPatternOnRing(cx, cy, radius, rotation) {
+function drawPatternOnRing(cx, cy, radius, rotation, spectrum) {
   push();
   translate(cx, cy);
   rotate(rotation);
@@ -294,23 +294,48 @@ function drawPatternOnRing(cx, cy, radius, rotation) {
     let angle = i * angleStep;
     let x = cx + cos(angle) * radius;
     let y = cy + sin(angle) * radius;
-    // Draw red circle
+    // Use FFT data to adjust the shape of the shapes
+    let shapeType = floor(map(spectrum[i % spectrum.length], 0, 255, 0, 3)); // Map FFT values to shape types
+
+    // Draw shapes based on FFT data
     fill(200, 0, 0);
-    ellipse(x, y, 10, 10);
-    // Draw yellow circle
+    if (shapeType == 0) {
+      ellipse(x, y, 10, 10); // Draw red circle
+    } else if (shapeType == 1) {
+      rect(x - 5, y - 5, 10, 10); // Draw red square
+    } else if (shapeType == 2) {
+      triangle(x, y - 5, x - 5, y + 5, x + 5, y + 5); // Draw red triangle
+    }
+
     let angleOffset = angleStep / 3;
     let xOffset = cx + cos(angle + angleOffset) * radius;
     let yOffset = cy + sin(angle + angleOffset) * radius;
     fill(255, 255, 0);
-    ellipse(xOffset, yOffset, 6, 6);
-    // Draw black ring
+    if (shapeType == 0) {
+      ellipse(xOffset, yOffset, 6, 6); // Draw yellow circle
+    } else if (shapeType == 1) {
+      rect(xOffset - 3, yOffset - 3, 6, 6); // Draw yellow square
+    } else if (shapeType == 2) {
+      triangle(xOffset, yOffset - 3, xOffset - 3, yOffset + 3, xOffset + 3, yOffset + 3); // Draw yellow triangle
+    }
+
     let angleOffset2 = angleStep / 3 * 2;
     let xOffset2 = cx + cos(angle + angleOffset2) * radius;
     let yOffset2 = cy + sin(angle + angleOffset2) * radius;
     fill(0);
-    ellipse(xOffset2, yOffset2, 21, 21);
-    fill(255);
-    ellipse(xOffset2, yOffset2, 7, 7);
+    if (shapeType == 0) {
+      ellipse(xOffset2, yOffset2, 21, 21); // Draw black ring
+      fill(255);
+      ellipse(xOffset2, yOffset2, 7, 7); // Draw inner white circle
+    } else if (shapeType == 1) {
+      rect(xOffset2 - 10.5, yOffset2 - 10.5, 21, 21); // Draw black square
+      fill(255);
+      rect(xOffset2 - 3.5, yOffset2 - 3.5, 7, 7); // Draw inner white square
+    } else if (shapeType == 2) {
+      triangle(xOffset2, yOffset2 - 10.5, xOffset2 - 10.5, yOffset2 + 10.5, xOffset2 + 10.5, yOffset2 + 10.5); // Draw black triangle
+      fill(255);
+      triangle(xOffset2, yOffset2 - 3.5, xOffset2 - 3.5, yOffset2 + 3.5, xOffset2 + 3.5, yOffset2 + 3.5); // Draw inner white triangle
+    }
   }
 
   pop();
