@@ -10,10 +10,22 @@ let redLineSpikes = 130; // Number of spikes in the red line, default 16
 let goldLineStrokeWeight = 3; // Width of the gold line, default 3
 let goldLineSpikes = 16; // Number of spikes in the gold line, default 16
 
+let soundFile, fft;
+let playButton;
+
+function preload() {
+  soundFile = loadSound('assets/655396__sergequadrado__middle-east.wav');
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight); // Create canvas adjusted to window size
-  noLoop(); // Stop draw function from looping, static display
-  noStroke(); // No border when drawing circles
+  fft = new p5.FFT();
+  soundFile.loop(); // Play the sound file in a loop
+
+  // Initialize play/pause button
+  playButton = createButton('Pause');
+  playButton.position(10, 10);
+  playButton.mousePressed(togglePlay);
 
   // Initialize all circle information and add to circles array
   let y = circleDiameter / 2;
@@ -55,15 +67,18 @@ function setup() {
 function draw() {
   background(50, 100, 150); // Set background color
 
+  let spectrum = fft.analyze();
+  let maxLevel = Math.max(...spectrum);
+
   // Draw all circles and other patterns
   for (let i = 0; i < circles.length; i++) {
     let c = circles[i];
     let radii = [c.d, c.d * 0.55, c.d * 0.5, c.d * 0.25, c.d * 0.15, c.d * 0.1, c.d * 0.05]; // Sizes of the main and inner circles
 
     if (c.isSpecial) {
-      drawSpecialCirclePattern(c.x, c.y, radii, c.colors, c.styleType);
+      drawSpecialCirclePattern(c.x, c.y, radii.map(r => r * (1 + maxLevel / 255)), c.colors, c.styleType);
     } else {
-      drawCirclePattern(c.x, c.y, radii, c.colors, c.styleType);
+      drawCirclePattern(c.x, c.y, radii.map(r => r * (1 + maxLevel / 255)), c.colors, c.styleType);
     }
   }
 
@@ -180,9 +195,9 @@ function drawGoldZShape(cx, cy, thirdRadius, fourthRadius) {
     let outerY = cy + sin(angle) * thirdRadius;
     vertex(outerX, outerY); // Add outer point
 
-    // Calculate inner point position (inner circle of the fourth circle), but slightly inward to form spikes
+    // Calculate inner point position (inner circle of the fourth circle)
     let innerAngle = angle + angleStep / 2;
-    let innerRadiusAdjust = fourthRadius + (thirdRadius - fourthRadius) * 0.3; // Adjust inner radius to avoid overly sharp spikes
+    let innerRadiusAdjust = fourthRadius + (thirdRadius - fourthRadius) * 0.3;
     let innerX = cx + cos(innerAngle) * innerRadiusAdjust;
     let innerY = cy + sin(innerAngle) * innerRadiusAdjust;
     vertex(innerX, innerY); // Add inner point
@@ -260,8 +275,7 @@ function drawOrangeCircles(circles) {
   }
 }
 
-function drawPatternOnRing(cx, cy
-  , radius) {
+function drawPatternOnRing(cx, cy, radius) {
   let numPatterns = 8; // Number of patterns, reducing density
   let angleStep = TWO_PI / numPatterns; // Angle between each pattern
 
@@ -338,5 +352,14 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   circles = [];
   setup(); // Regenerate circles
-  redraw();
+}
+
+function togglePlay() {
+  if (soundFile.isPlaying()) {
+    soundFile.pause();
+    playButton.html('Play');
+  } else {
+    soundFile.loop();
+    playButton.html('Pause');
+  }
 }
