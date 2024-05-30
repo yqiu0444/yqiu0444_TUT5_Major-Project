@@ -101,7 +101,7 @@ function draw() {
   for (let i = 0; i < circles.length; i++) {
     let c = circles[i];
     if (c.hasArc) {  // Check if arc needs to be drawn
-      drawArcThroughCenter(c.x, c.y, c.d / 2, c.startAngle);
+      drawArcThroughCenter(c.x, c.y, c.d / 2, c.startAngle, spectrum[i % spectrum.length]);
     }
   }
 
@@ -341,7 +341,7 @@ function drawPatternOnRing(cx, cy, radius, rotation, spectrum) {
   pop();
 }
 
-function drawArcThroughCenter(x, y, radius, startAngle) {
+function drawArcThroughCenter(x, y, radius, startAngle, spectrumValue) {
   push();
   let baseColor = color(255, 20, 147); // Original pink color
   let shadowColor = lerpColor(baseColor, color(0), 0.25); // Generate darker pink shadow
@@ -349,32 +349,18 @@ function drawArcThroughCenter(x, y, radius, startAngle) {
   strokeWeight(6); // Set line width
   noFill(); // No fill
 
-  // Calculate start and end points of the arc based on startAngle
-  let endX = x + cos(startAngle - PI / 4) * radius * 1.5;
-  let endY = y + sin(startAngle - PI / 4) * radius * 1.5;
+  // Calculate arc end angle based on FFT spectrum value
+  let endAngle = startAngle + map(spectrumValue, 0, 255, -PI / 2, PI / 2);
 
   // Draw shadow
   stroke(shadowColor); // Use darker pink as shadow color
-  drawCurvedLine(x, y + 3, endX, endY + 3);
+  arc(x, y + 3, radius * 2, radius * 2, startAngle, endAngle);
 
   // Draw main arc
   stroke(baseColor); // Use original pink
-  drawCurvedLine(x, y, endX, endY);
+  arc(x, y, radius * 2, radius * 2, startAngle, endAngle);
 
   pop(); // Restore previous drawing settings
-}
-
-function drawCurvedLine(x1, y1, x2, y2) {
-  // Calculate control points to make the curve arc-shaped
-  let cx1 = (x1 + x2) / 2 + (y2 - y1) * 0.5;
-  let cy1 = (y1 + y2) / 2 - (x2 - x1) * 0.5;
-
-  // Use quadratic bezier curve to draw the arc
-  noFill();
-  beginShape();
-  vertex(x1, y1);
-  quadraticVertex(cx1, cy1, x2, y2);
-  endShape();
 }
 
 function generateColors() {
