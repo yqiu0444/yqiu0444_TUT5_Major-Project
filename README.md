@@ -64,14 +64,21 @@ Some functions taken from the p5.js library.
    Purpose: Blends two colors to find a color between them.
 
 
-**2. Techniques from the Internet:**  Find and use the corresponding technique in the p5.js library.
+**2. Techniques from the Internet:**  Learning by watching videos and applying what I learn.These links are the techniques I've utilized.
+
+
+[Sound Visualization: radial graph](https://www.youtube.com/watch?v=h_aTgOl9J5I&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=10
+Links to an external site.)
+
+[Sound Visualization: Frequency Analysis with FFT](https://www.youtube.com/watch?v=2O3nm0Nvbi4&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=11
+Links to an external site.)
+
+[Code an Audio Visualizer in p5js](https://www.youtube.com/watch?v=uk96O7N1Yo0
+Links to an external site.)
+
+
+With these functions, I can draw different shapes and sizes of graphics to match the audio features.
 
 
 
-
-
-   With these P5.js functions, I can draw different shapes and sizes of graphics to match the audio features.
-
-
-
-   
+   To watch the animation, please click the button in the upper left corner

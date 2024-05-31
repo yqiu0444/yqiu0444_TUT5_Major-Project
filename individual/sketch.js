@@ -387,4 +387,3 @@ function togglePlay() {
     playButton.html('Pause');
   }
 }
-
