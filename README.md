@@ -67,16 +67,16 @@ Some functions taken from the p5.js library.
 
 
 [Sound Visualization: radial graph](https://www.youtube.com/watch?v=h_aTgOl9J5I&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=10
-Links to an external site.)
+)
 
 [Sound Visualization: Frequency Analysis with FFT](https://www.youtube.com/watch?v=2O3nm0Nvbi4&list=PLRqwX-V7Uu6aFcVjlDAkkGIixw70s7jpW&index=11
-Links to an external site.)
+)
 
 [Code an Audio Visualizer in p5js](https://www.youtube.com/watch?v=uk96O7N1Yo0
-Links to an external site.)
+)
 
 
-**With these functions, I can draw different shapes and sizes of graphics to match the audio features.:**
+**With these functions, I can draw different shapes and sizes of graphics to match the audio features:**
 
 **1.Rotation of the Yellow Outer Ring:**
 The rotation of the yellow outer ring is controlled by the **‘rotationAngle’**  variable, which is updated in the **‘draw’** method of the **‘Visualizer’** class. 
@@ -88,7 +88,7 @@ The rotation of the yellow outer ring is controlled by the **‘rotationAngle’
 
 **4.Changes in the Size of the Concentric Circles:** The changes in the size of the concentric circles are controlled by the **‘draw’** method of the **‘CirclePattern’** class, which scales the radii based on the  **‘spectrumValue’**.
 
-The changes in the size of the concentric circles are controlled by the draw method of the CirclePattern class, which scales the radii based on the spectrumValue.
+
 
 
 
