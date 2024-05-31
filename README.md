@@ -93,7 +93,10 @@ The rotation of the yellow outer ring is controlled by the **‘rotationAngle’
 
 
 
-*<To watch the animation, please click the button in the upper left corner>*
+
+* To watch the animation, please click the button in the upper left corner
+
+* I admit to using chatgpt to help me fix the code formatting errors
 
 
-*<I admit to using chatgpt to help me fix the code formatting errors>*
+
