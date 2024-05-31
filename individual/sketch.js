@@ -129,7 +129,7 @@ class Visualizer {
     let maxLevel = Math.max(...spectrum); // Get the maximum level from the spectrum array
 
     // Calculate rotation angle based on audio data
-    rotationAngle += maxLevel / 9000; // Adjust the rotation angle
+    rotationAngle += maxLevel / 10000; // Adjust the rotation angle
 
     // Draw all circles and other patterns
     for (let i = 0; i < this.circles.length; i++) {
