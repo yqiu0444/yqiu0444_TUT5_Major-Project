@@ -44,23 +44,28 @@ I feel the charm of geometric shapes and colors from this picture. Simple circle
 ### External Tools and Techniques
 
 **1. p5.js Audio Library and p5.js Reference:**  Find and use the corresponding technique in the p5.js library.
+     
 
 Some functions taken from the p5.js library.
 
 **‘new p5.FFT()’** 
    Purpose: Creates a Fast Fourier Transform (FFT) object for audio analysis.
+   [Link Text](https://p5js.org/reference/#/p5.FFT)
 
 **‘analyze()’** 
-   Purpose: Analyzes the sound and returns an array representing the frequency spectrum.
+   Purpose: Analyzes the sound and returns an array representing the frequency spectrum.[Link Text](https://p5js.org/reference/#/p5.FFT/analyze)
 
 **‘map(value, start1, stop1, start2, stop2)’** 
-   Purpose: Re-maps a number from one range to another.
+   Purpose: Re-maps a number from one range to another.[Link Text](https://p5js.org/reference/#/p5/map)
+
 
 **‘arc(x, y, w, h, start, stop)’** 
-   Purpose: Draws an arc.
+   Purpose: Draws an arc.[Link Text](https://p5js.org/reference/#/p5/arc)
+
 
 **‘lerpColor(c1, c2, amt)’** 
-   Purpose: Blends two colors to find a color between them.
+   Purpose: Blends two colors to find a color between them.[Link Text](https://p5js.org/reference/#/p5/lerpColor)
+
 
 
 **2. Techniques from the Internet:**  Learning by watching videos and applying what I learn.These links are the techniques I've utilized.
