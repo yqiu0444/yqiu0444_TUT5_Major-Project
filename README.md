@@ -13,11 +13,10 @@
 ## Details of my individual approach to animating the group code
 
 
-### I choose to use *audio* to drive my individual code
+## （I choose to use *audio* to drive my individual code）
 
 
-
-**Animated Properties** 
+### Animated Properties
 
 **1. Circle Sizes:**  The sizes of the concentric circles change based on the frequency spectrum of the audio. This makes the circles expand and contract in response to different frequencies.
 
@@ -30,19 +29,19 @@
 These properties make my work unique as it focuses on audio-responsive animations（mainly shape and size changes）, contrasting with group members who might focus on color changes.
 
 
-**References and Inspirations** 
+### References and Inspirations
 
 
 ![An image of my inspiration](readmeImages/7351747_orig.jpg)
 
 ![An image of my inspiration](readmeImages/6801766_orig.jpg)
 
-**How did they influence my submission?**
+### How did they influence my submission?
 
 I feel the charm of geometric shapes and colors from this picture. Simple circles can be delicately arranged to create a dynamic visual effect, showing the aesthetics of abstract art. At the same time with the rich and vibrant color scheme, it gives the viewer a wonderful experience! So for my project I wanted to use bright colors and simple geometric shapes to create an ethnic visual effect, and I chose audio with an ethnic flavor!
 
 
-**External Tools and Techniques** 
+### External Tools and Techniques
 
 **1. p5.js Audio Library and p5.js Reference:**  Find and use the corresponding technique in the p5.js library.
 
@@ -77,8 +76,22 @@ Links to an external site.)
 Links to an external site.)
 
 
-With these functions, I can draw different shapes and sizes of graphics to match the audio features.
+**With these functions, I can draw different shapes and sizes of graphics to match the audio features.:**
+
+**1.Rotation of the Yellow Outer Ring:**
+The rotation of the yellow outer ring is controlled by the **‘rotationAngle’**  variable, which is updated in the **‘draw’** method of the **‘Visualizer’** class. 
+
+**2.Shape Changes of Squares and Triangles on the Yellow Outer Ring:** The shape changes of squares and triangles are handled by the **‘drawPatternOnRing’** function, which determines the shape type based on the **‘spectrum’** values.
+
+
+**3.Changes of the Pink Arcs:** The changes in the pink arcs are controlled by the **‘drawArcThroughCenter’** function, which calculates the end angle based on the  **‘spectrumValue’**.
+
+**4.Changes in the Size of the Concentric Circles:** The changes in the size of the concentric circles are controlled by the **‘draw’** method of the **‘CirclePattern’** class, which scales the radii based on the  **‘spectrumValue’**.
+
+The changes in the size of the concentric circles are controlled by the draw method of the CirclePattern class, which scales the radii based on the spectrumValue.
 
 
 
-   To watch the animation, please click the button in the upper left corner
+
+*To watch the animation, please click the button in the upper left corner*
+
